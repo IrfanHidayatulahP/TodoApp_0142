@@ -87,6 +87,18 @@ class _TodoPageState extends State<TodoPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const Text("Task Date:", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    const Text("Select a date and time", style: TextStyle(fontSize: 14)),
+                    TextFormField(
+                      controller: _dateController,
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          icon: const Icon(Icons.calendar_today, color: Colors.blue),
+                          onPressed: () => _selectDateTime(context),
+                        ),
+                      ),
+                      readOnly: true,
+                    ),
                     const SizedBox(height: 16),
                     TextFormField(
                       controller: _taskController,
@@ -105,24 +117,7 @@ class _TodoPageState extends State<TodoPage> {
                         return null;
                       },
                     ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: _dateController,
-                      decoration: InputDecoration(
-                        labelText: "Date",
-                        labelStyle: const TextStyle(color: Colors.purple),
-                        border: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.purple),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Date tidak boleh kosong';
-                        }
-                        return null;
-                      },
-                    ),
+                    
                     const SizedBox(height: 16),
                     ElevatedButton(
                       onPressed: addData,
