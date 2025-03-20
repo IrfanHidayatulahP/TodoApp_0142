@@ -69,6 +69,24 @@ class _TodoPageState extends State<TodoPage> {
                       },
                     ),
                     const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _dateController,
+                      decoration: InputDecoration(
+                        labelText: "Date",
+                        labelStyle: const TextStyle(color: Colors.purple),
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.purple),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Date tidak boleh kosong';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
                     ElevatedButton(
                       onPressed: addData,
                       child: const Text('Add Task'),
@@ -87,6 +105,7 @@ class _TodoPageState extends State<TodoPage> {
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: Text(listTugas[index]['task']),
+                      subtitle: Text(listTugas[index]['date']),
                       trailing: Checkbox(
                         value: listTugas[index]['done'],
                         onChanged: (bool? value) {
