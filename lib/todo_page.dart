@@ -108,6 +108,14 @@ class _TodoPageState extends State<TodoPage> {
                     const SizedBox(height: 16),
                     TextFormField(
                       controller: _taskController,
+                      decoration: InputDecoration(
+                        labelText: "Task",
+                        labelStyle: const TextStyle(color: Colors.purple),
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.purple),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Task tidak boleh kosong';
