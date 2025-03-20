@@ -68,7 +68,7 @@ class _TodoPageState extends State<TodoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Todo Page'),
+        title: const Text('Form Page'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -108,49 +108,58 @@ class _TodoPageState extends State<TodoPage> {
                     const SizedBox(height: 16),
                     TextFormField(
                       controller: _taskController,
-                      decoration: InputDecoration(
-                        labelText: "Task",
-                        labelStyle: const TextStyle(color: Colors.purple),
-                        border: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.purple),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
+                        if (value!.isEmpty) {
                           return 'Task tidak boleh kosong';
                         }
                         return null;
                       },
                     ),
-                    
-                    const SizedBox(height: 16),
-                    ElevatedButton(
-                      onPressed: addData,
-                      child: const Text('Add Task'),
-                    ),
                   ],
                 ),
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Task List:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                  ),
+                  onPressed: addData,
+                  child: const Text('Submit', style: TextStyle(color: Colors.white)),
+                ),
               ),
+              const SizedBox(height: 16),
+              const Text("List Tasks", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               Expanded(
                 child: ListView.builder(
                   itemCount: listTugas.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(listTugas[index]['task']),
-                      subtitle: Text(listTugas[index]['date']),
-                      trailing: Checkbox(
-                        value: listTugas[index]['done'],
-                        onChanged: (bool? value) {
-                          setState(() {
-                            listTugas[index]['done'] = value;
-                          });
-                        },
+                    return Card(
+                      color: Colors.grey[200],
+                      margin: const EdgeInsets.symmetric(vertical: 8),
+                      child: ListTile(
+                        title: Text(
+                          listTugas[index]['task'] ?? '',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Deadline: ${listTugas[index]['date']}"),
+                            Text(
+                              listTugas[index]['done'] ? "Done" : "Not Done",
+                            ),
+                          ],
+                        ),
+                        trailing: Checkbox(
+                          activeColor: Colors.purple,
+                          value: listTugas[index]['done'],
+                          onChanged: (bool? value) {
+                            _updateTaskStatus(index, value!);
+                          },
+                        ),
                       ),
                     );
                   },
