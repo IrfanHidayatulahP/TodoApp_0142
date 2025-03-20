@@ -98,6 +98,12 @@ class _TodoPageState extends State<TodoPage> {
                         ),
                       ),
                       readOnly: true,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Tanggal tidak boleh kosong';
+                        }
+                        return null;
+                      },
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
