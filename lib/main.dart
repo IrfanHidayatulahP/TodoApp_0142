@@ -51,6 +51,10 @@ class _MyHomePageState extends State<MyHomePage> {
             Center(
               child: ElevatedButton(
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const TodoPage()),
+                  );
                 },
                 style: ElevatedButton.styleFrom( 
                   backgroundColor: Colors.blue, // Warna tombol lebih gelap
