@@ -101,6 +101,7 @@ class _TodoPageState extends State<TodoPage> {
                     TextFormField(
                       controller: _dateController,
                       decoration: InputDecoration(
+                        hintText: "Pilih tanggal dan waktu",
                         suffixIcon: IconButton(
                           icon: const Icon(Icons.calendar_today, color: Colors.blue),
                           onPressed: () => _selectDateTime(context),
@@ -120,6 +121,7 @@ class _TodoPageState extends State<TodoPage> {
                       decoration: InputDecoration(
                         labelText: "Task",
                         labelStyle: const TextStyle(color: Colors.purple),
+                        hintText: "Masukkan nama tugas",
                         border: OutlineInputBorder(
                           borderSide: const BorderSide(color: Colors.purple),
                           borderRadius: BorderRadius.circular(8),
