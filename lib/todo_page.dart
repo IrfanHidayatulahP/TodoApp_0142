@@ -158,6 +158,9 @@ class _TodoPageState extends State<TodoPage> {
                             Text("Deadline: ${listTugas[index]['date']}"),
                             Text(
                               listTugas[index]['done'] ? "Done" : "Not Done",
+                              style: TextStyle(
+                                color: listTugas[index]['done'] ? Colors.green : Colors.red,
+                              ),
                             ),
                           ],
                         ),
