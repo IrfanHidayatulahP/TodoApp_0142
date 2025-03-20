@@ -118,6 +118,7 @@ class _TodoPageState extends State<TodoPage> {
                     const SizedBox(height: 16),
                     TextFormField(
                       controller: _taskController,
+                      maxLines: 2, // Membuat field lebih besar
                       decoration: InputDecoration(
                         labelText: "Task",
                         labelStyle: const TextStyle(color: Colors.purple),
@@ -126,6 +127,7 @@ class _TodoPageState extends State<TodoPage> {
                           borderSide: const BorderSide(color: Colors.purple),
                           borderRadius: BorderRadius.circular(8),
                         ),
+                        contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12), // Menambah padding agar lebih besar
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
