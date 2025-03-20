@@ -25,6 +25,15 @@ class _TodoPageState extends State<TodoPage> {
         _taskController.clear();
         _dateController.clear();
       });
+
+      // Tampilkan notifikasi
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Data berhasil ditambahkan!'),
+          duration: Duration(seconds: 2),
+          backgroundColor: Colors.green,
+        ),
+      );
     }
   }
 
