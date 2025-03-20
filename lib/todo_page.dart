@@ -58,6 +58,12 @@ class _TodoPageState extends State<TodoPage> {
     }
   }
 
+  void _updateTaskStatus(int index, bool value) {
+    setState(() {
+      listTugas[index]['done'] = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
