@@ -52,7 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ElevatedButton(
                 onPressed: () {
                 },
-                style: ElevatedButton.styleFrom( // Warna ikon putih agar kontras
+                style: ElevatedButton.styleFrom( 
+                  backgroundColor: Colors.blue, // Warna tombol lebih gelap
+                  foregroundColor: const Color.fromARGB(255, 231, 226, 226),// Warna ikon putih agar kontras
                   minimumSize: const Size(200, 50), // Ukuran tombol (lebar x tinggi)
                 ),
                 child: const Icon(Icons.work, size: 30), // Ikon di tengah tombol
